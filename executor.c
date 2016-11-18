@@ -4,20 +4,18 @@
 #include <string.h>
 
 int main(){
-  printf("enter a command ");
-  char s[50];
+  printf("enter a command:$ ");
+
+  char s[256];
   fgets(s,sizeof(s),stdin);
-  printf("%s\n",s);
   char *a = s;
+  s[strlen(s)-1]=0;
+
   char *command[sizeof(s)];
-  int i;
-  for(i=0;command[i] = strsep(&a," ");i++)
-  // printf("%d\n",i);
-  command[i]=0;
-  int j=0;
-  while(command[j]){
-    printf("%s",command[j]);
-    j++;
-    }
+  int i=0;
+  while(a!=NULL){
+    command[i]=strsep(&a," ");
+    i++;
+  }
   execvp(command[0],command);
 }
