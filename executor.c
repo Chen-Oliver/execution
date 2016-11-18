@@ -9,15 +9,15 @@ int main(){
   fgets(s,sizeof(s),stdin);
   printf("%s\n",s);
   char *a = s;
-  char *command[sizeof(s)+1];
+  char *command[sizeof(s)];
   int i;
-  for(i=0;command[i] = strsep(&a," ");i++);
-  printf("%d\n",i);
-  command[i+1]=0;
-  int j = 0;
+  for(i=0;command[i] = strsep(&a," ");i++)
+  // printf("%d\n",i);
+  command[i]=0;
+  int j=0;
   while(command[j]){
-    printf("%s\n",command[j]);
+    printf("%s",command[j]);
     j++;
-  }
+    }
   execvp(command[0],command);
 }
